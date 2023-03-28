@@ -1,0 +1,22 @@
+{
+  "header": {
+    "ru": "Мебель на заказ SHKAFMASTER",
+    "ro": "Mobila la comanda SHKAFMASTER",
+    "en": "Custom Furniture SHKAFMASTER"
+  },
+  "orderButton": {
+    "ru": "Заказать",
+    "ro": "Comandati",
+    "en": "Order"
+  },
+  "catalogButton": {
+    "ru": "Каталог",
+    "ro": "Catalog",
+    "en": "Catalog"
+  },
+  "text": {
+    "ru": "Уникальные интерьерные решения для дома и офиса. Производство корпусной и встроенной продукции – основная специализация нашей компании. Мы создаем композиции для всех жилых помещений.",
+    "ro": "Soluții de interior unice pentru casă și birou. Producția de produse de cabinet și încorporate este principala specializare a companiei noastre. Cream compozitii pentru toate spatiile de locuit.",
+    "en": "Unique interior solutions for home and office. Manufacture of cabinet and built-in products is the main specialization of our company. We create compositions for all residential areas."
+  }
+}

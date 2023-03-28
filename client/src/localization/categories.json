@@ -1,0 +1,39 @@
+{
+  "categoriesHeader": {
+    "ru": "Каталог",
+    "ro": "Catalog",
+    "en": "Catalog"
+  },
+  "categoryNames": {
+    "kitchen": {
+      "ru": "Кухни",
+      "ro": "Bucatarii",
+      "en": "Kitchen"
+    },
+    "wardrobes": {
+      "ru": "Шкафы",
+      "ro": "Dulapuri",
+      "en": "Wardrobes"
+    },
+    "hallways": {
+      "ru": "Прихожие",
+      "ro": "Antreuri",
+      "en": "Hallways"
+    },
+    "office": {
+      "ru": "Офис",
+      "ro": "Oficiu",
+      "en": "Office"
+    },
+    "tables": {
+      "ru": "Столы",
+      "ro": "Mese",
+      "en": "Tables"
+    },
+    "living": {
+      "ru": "Стенки-горки",
+      "ro": "Living",
+      "en": "Living"
+    }
+  }
+}

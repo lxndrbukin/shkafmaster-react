@@ -1,0 +1,41 @@
+{
+  "logo": {
+    "ru": "Мебель на заказ",
+    "ro": "Mobila la comanda",
+    "en": "Custom Furniture"
+  },
+  "menuButtons": {
+    "home": {
+      "ru": "Главная",
+      "ro": "Principala",
+      "en": "Home"
+    },
+    "products": {
+      "ru": "Каталог",
+      "ro": "Catalog",
+      "en": "Catalog"
+    },
+    "contacts": {
+      "ru": "Контакты",
+      "ro": "Contacte",
+      "en": "Contacts"
+    }
+  },
+  "userMenu": {
+    "cart": {
+      "ru": "Корзина",
+      "ro": "Coş",
+      "en": "Cart"
+    },
+    "userProfile": {
+      "ru": "Профиль",
+      "ro": "Cont",
+      "en": "Profile"
+    },
+    "login": {
+      "ru": "Войти",
+      "ro": "Intrati",
+      "en": "Login"
+    }
+  }
+}

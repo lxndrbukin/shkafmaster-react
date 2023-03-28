@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root {
+  --dark: #323232;
+  --light: #f7f9fc;
+  --light-two: #f6f4f0;
+  --light-three: #b9b6aa;
+  --light-four: #c6c0b9;
+  --standard-width: 1140px;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 32px;
+  --spacing-xl: 64px;
+}
+
+/* BODY */
+body {
+  margin: 0;
+}
+
+/* ROOT */
+#root {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* H's */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Montserrat', sans-serif;
+  margin: 0;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 4.5rem;
+}
+
+h3 {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 2.25rem;
+}
+
+h5 {
+  font-size: 1.5rem;
+}
+
+h6 {
+  font-size: 1.15rem;
+}
+
+/* HEADER */
+.header-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--dark);
+}
+
+.header {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: var(--standard-width);
+  padding: var(--spacing-sm) 0;
+  box-sizing: border-box;
+}
+
+.header .logo {
+  font-weight: 600;
+  color: var(--light-three);
+  letter-spacing: 0.02rem;
+  font-size: 1.4rem;
+}
+
+.header .navbar .nav-links {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.header .navbar .nav-links a {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.02rem;
+  color: var(--light-three);
+  text-decoration: none;
+}
+
+.header .user-nav .user-nav-links {
+  display: flex;
+  list-style: none;
+}
+
+.header .user-nav .user-nav-links a {
+  padding: var(--spacing-xs);
+  font-size: 1.3rem;
+  color: var(--light-three);
+}
+
+/* MAIN */
+main {
+  width: 100%;
+}
+
+/* SECTION */
+section {
+  width: 100%;
+}
+
+/* INTRO */
+.intro-wrapper {
+  background-color: var(--dark);
+}
+
+.intro {
+  display: grid;
+  grid-template: 1fr / repeat(2, minmax(400px, 50%));
+}
+
+.intro .intro-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* FOOTER */
+.footer-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: var(--standard-width);
+}

@@ -1,0 +1,22 @@
+{
+  "header": {
+    "ru": "Запросите звонок",
+    "ro": "Solicitati un apel",
+    "en": "Request a call"
+  },
+  "nameField": {
+    "ru": "Имя",
+    "ro": "Prenume",
+    "en": "First Name"
+  },
+  "phoneField": {
+    "ru": "Мобильный телефон",
+    "ro": "Numar de telefon mobil",
+    "en": "Mobile phone number"
+  },
+  "submitButton": {
+    "ru": "Запросить",
+    "ro": "Solicita",
+    "en": "Request"
+  }
+}
