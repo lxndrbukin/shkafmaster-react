@@ -1,9 +1,37 @@
+import { useState } from 'react';
 import headerLocalization from '../localization/header.json';
 
 const { home, products, contacts } = headerLocalization.menuButtons;
 const { cart, userProfile, login } = headerLocalization.userMenu;
 
 export default function Header() {
+  const [auth, setAuth] = useState(false);
+  const changeAuth = (e) => {
+    e.preventDefault();
+    setAuth(!auth);
+  };
+
+  const showAuth = () => {
+    if (auth) {
+      return (
+        <li>
+          <a href='/' onClick={changeAuth} title={userProfile['en']}>
+            {/* <i className='fas fa-user'></i> */}
+            Log out
+          </a>
+        </li>
+      );
+    }
+    return (
+      <li>
+        <a href='/' onClick={changeAuth} title={userProfile['en']}>
+          {/* <i className='fas fa-user'></i> */}
+          Log in
+        </a>
+      </li>
+    );
+  };
+
   return (
     <header className='header-wrapper'>
       <div className='header'>
@@ -23,11 +51,7 @@ export default function Header() {
         </nav>
         <div className='user-nav'>
           <ul className='user-nav-links'>
-            <li>
-              <a href='/' title={userProfile['en']}>
-                <i className='fas fa-user'></i>
-              </a>
-            </li>
+            {showAuth()}
             <li>
               <select>
                 <option>RO</option>
