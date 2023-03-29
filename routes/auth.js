@@ -2,7 +2,7 @@ const usersRepo = require('../repositories/Users');
 const { signUpErrors } = require('./helpers/middlewares');
 
 module.exports = (app) => {
-  app.post('/signup', signUpErrors, async (req, res) => {
+  app.post('/api/signup', signUpErrors, async (req, res) => {
     const checkedUser = await usersRepo.getOneBy({ email: req.body.email });
     const checkedPassword = await usersRepo.checkPassword(req.body.password);
     const { password, confirmPassword } = req.body;
@@ -17,6 +17,10 @@ module.exports = (app) => {
         req.session.userId = user.userId;
       }
     }
-    return res.send('Registered');
+  });
+
+  app.post('/api/signin', async (req, res) => {
+    const user = await usersRepo.getOneBy({ email: req.body.email });
+    return res.send(user);
   });
 };

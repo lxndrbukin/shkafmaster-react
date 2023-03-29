@@ -8,4 +8,5 @@ export const store = configureStore({
 });
 
 export * from './slices/authSlice';
-export * from './thunks/usersThunk';
+export * from './thunks/createUser';
+export * from './thunks/loginUser';

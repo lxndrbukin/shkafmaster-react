@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Homepage from './pages/Homepage';
 import Signup from './components/Signup';
+import Signin from './components/Signin';
 import Footer from './components/Footer';
 
 export default class App extends React.Component {
@@ -17,6 +18,9 @@ export default class App extends React.Component {
             </Routes>
             <Routes>
               <Route path='/signup' element={<Signup />} />
+            </Routes>
+            <Routes>
+              <Route path='/signin' element={<Signin />} />
             </Routes>
           </main>
           <Footer />
