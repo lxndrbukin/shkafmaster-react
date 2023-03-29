@@ -6,3 +6,6 @@ export const store = configureStore({
     auth: authReducer,
   },
 });
+
+export * from './slices/authSlice';
+export * from './thunks/usersThunk';

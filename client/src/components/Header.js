@@ -1,21 +1,23 @@
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeAuth } from '../store';
 import headerLocalization from '../localization/header.json';
 
 const { home, products, contacts } = headerLocalization.menuButtons;
 const { cart, userProfile, login } = headerLocalization.userMenu;
 
 export default function Header() {
-  const [auth, setAuth] = useState(false);
-  const changeAuth = (e) => {
+  const dispatch = useDispatch();
+  const { status } = useSelector((state) => state.auth);
+  const setAuth = (e) => {
     e.preventDefault();
-    setAuth(!auth);
+    dispatch(changeAuth(!status));
   };
 
   const showAuth = () => {
-    if (auth) {
+    if (status) {
       return (
         <li>
-          <a href='/' onClick={changeAuth} title={userProfile['en']}>
+          <a href='/' onClick={(e) => setAuth(e)} title={userProfile['en']}>
             {/* <i className='fas fa-user'></i> */}
             Log out
           </a>
@@ -24,7 +26,7 @@ export default function Header() {
     }
     return (
       <li>
-        <a href='/' onClick={changeAuth} title={userProfile['en']}>
+        <a href='/' onClick={(e) => setAuth(e)} title={userProfile['en']}>
           {/* <i className='fas fa-user'></i> */}
           Log in
         </a>

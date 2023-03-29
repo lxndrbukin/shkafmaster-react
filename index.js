@@ -1,7 +1,29 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cookieSession = require('cookie-session');
+const cookieParser = require('cookie-parser');
+
+require('./models/User');
+
+mongoose
+  .connect(
+    'mongodb+srv://lxndrbukin:REa1996TSu@shkafmaster.sr5sz55.mongodb.net/shkafmaster?retryWrites=true&w=majority'
+  )
+  .then(() => console.log('MONGODB CONNECTED'));
 
 const app = express();
+app.use(cookieParser());
+app.use(cookieSession({
+  name: 'session',
+  keys: ['12fasf323tdsga53ag'],
+  maxAge: 24 * 60 * 60 * 1000
+}))
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+require('./routes/auth')(app);
 require('./routes/catalog')(app);
 
 const PORT = 5000;

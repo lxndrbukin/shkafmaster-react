@@ -1,14 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { createUser } from '../thunks/usersThunk';
 
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
-    auth: false,
+    status: false,
+    user: {},
   },
   reducers: {
-    changeAuth(state) {
-      state.auth = !state.auth;
+    changeAuth(state, action) {
+      state.status = action.payload;
     },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(createUser, (state, action) => {
+      state.user = { ...state.user, ...action.payload };
+      console.log(state.user);
+    });
   },
 });
 
