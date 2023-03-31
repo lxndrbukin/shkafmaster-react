@@ -14,11 +14,20 @@ export default function Signup() {
   };
 
   return (
-    <form onSubmit={formSubmit}>
-      <input name='email' type='text' />
-      <input name='password' type='password' />
-      <input name='confirmPassword' type='password' />
-      <input type='Submit' />
-    </form>
+    <div className='box auth'>
+      <h6 className='form-header'>Sign Up</h6>
+      <form className='form' onSubmit={formSubmit}>
+        <div className='input-wrapper'>
+          <input name='email' type='text' />
+        </div>
+        <div className='input-wrapper'>
+          <input name='password' type='password' />
+        </div>
+        <div className='input-wrapper'>
+          <input name='confirmPassword' type='password' />
+        </div>
+        <input type='Submit' />
+      </form>
+    </div>
   );
 }

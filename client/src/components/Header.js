@@ -1,63 +1,75 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changeAuth } from '../store';
+import { changeAuth, changeLanguage } from '../store';
+import { Link } from 'react-router-dom';
+import Logo from '../assets/custom/Logo';
 import headerLocalization from '../localization/header.json';
 
 const { home, products, contacts } = headerLocalization.menuButtons;
 const { cart, userProfile, login } = headerLocalization.userMenu;
 
+const languages = ['ro', 'ru', 'en'];
+const menuButtons = [home, products, contacts];
+
 export default function Header() {
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.auth);
+  const { status, language } = useSelector((state) => state.auth);
   const setAuth = (e) => {
     e.preventDefault();
     dispatch(changeAuth(!status));
   };
 
+  const setLangauge = (e) => {
+    dispatch(changeLanguage(e.target.value.toLowerCase()));
+  };
+
   const showAuth = () => {
     if (status) {
       return (
-        <li>
-          <a href='/' onClick={(e) => setAuth(e)} title={userProfile['en']}>
-            {/* <i className='fas fa-user'></i> */}
-            Log out
-          </a>
+        <li className='user-nav-link'>
+          <Link to='/profile'>
+            <i className='fas fa-user'></i>
+          </Link>
         </li>
       );
     }
     return (
-      <li>
-        <a href='/' onClick={(e) => setAuth(e)} title={userProfile['en']}>
-          {/* <i className='fas fa-user'></i> */}
-          Log in
-        </a>
+      <li className='user-nav-link'>
+        <Link to='/signin'>
+          <i className='fas fa-sign-in-alt'></i>
+        </Link>
       </li>
     );
   };
 
+  const renderedMenuButtons = menuButtons.map((button) => {
+    return (
+      <li key={button['en']}>
+        <a href='/'>{button[language]}</a>
+      </li>
+    );
+  });
+
+  const renderedOptions = languages.map((lang) => {
+    return <option key={lang}>{lang.toUpperCase()}</option>;
+  });
+
   return (
     <header className='header-wrapper'>
       <div className='header'>
-        <div className='logo'>SHKAFMASTER</div>
+        <Logo />
         <nav className='navbar'>
-          <ul className='nav-links'>
-            <li>
-              <a href='/'>{home['en']}</a>
-            </li>
-            <li>
-              <a href='/'>{contacts['en']}</a>
-            </li>
-            <li>
-              <a href='/'>{products['en']}</a>
-            </li>
-          </ul>
+          <ul className='nav-links'>{renderedMenuButtons}</ul>
         </nav>
         <div className='user-nav'>
           <ul className='user-nav-links'>
             {showAuth()}
-            <li>
-              <select>
-                <option>RO</option>
-                <option>RU</option>
+            <li className='user-nav-link'>
+              <select
+                className='lang-selector'
+                defaultValue={language.toUpperCase()}
+                onChange={setLangauge}
+              >
+                {renderedOptions}
               </select>
             </li>
           </ul>

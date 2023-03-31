@@ -7,10 +7,15 @@ const authSlice = createSlice({
   initialState: {
     status: false,
     user: {},
+    language: localStorage.getItem('lang') || 'ro',
   },
   reducers: {
     changeAuth(state, action) {
       state.status = action.payload;
+    },
+    changeLanguage(state, action) {
+      localStorage.setItem('lang', action.payload);
+      state.language = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -23,5 +28,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { changeAuth } = authSlice.actions;
+export const { changeAuth, changeLanguage } = authSlice.actions;
 export default authSlice.reducer;
