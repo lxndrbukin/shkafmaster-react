@@ -425,6 +425,7 @@ section {
   color: var(--white);
   font-weight: 600;
   margin: var(--spacing-xs);
+  cursor: pointer;
 }
 
 /* FOOTER */

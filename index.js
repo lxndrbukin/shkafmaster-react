@@ -13,15 +13,16 @@ mongoose
   .then(() => console.log('MONGODB CONNECTED'));
 
 const app = express();
-app.use(cookieParser());
-app.use(cookieSession({
-  name: 'session',
-  keys: ['12fasf323tdsga53ag'],
-  maxAge: 24 * 60 * 60 * 1000
-}))
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(
+  cookieSession({
+    name: 'session',
+    keys: ['12fasf323tdsga53ag'],
+    maxAge: 24 * 60 * 60 * 1000,
+  })
+);
+app.use(cookieParser());
 
 require('./routes/auth')(app);
 require('./routes/catalog')(app);

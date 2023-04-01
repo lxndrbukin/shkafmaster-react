@@ -1,0 +1,66 @@
+[
+  {
+    "path": "/",
+    "languages": {
+      "ru": "Мебель на заказ",
+      "ro": "Mobila la comanda",
+      "en": "Custom furniture"
+    }
+  },
+  {
+    "path": "/products",
+    "languages": {
+      "ru": "Продукты",
+      "ro": "Produse",
+      "en": "Products"
+    }
+  },
+  {
+    "path": "/contacts",
+    "languages": {
+      "ru": "Контакты",
+      "ro": "Contacte",
+      "en": "Contacts"
+    }
+  },
+  {
+    "path": "/profile",
+    "languages": {
+      "ru": "Профиль",
+      "ro": "Cont",
+      "en": "Profile"
+    }
+  },
+  {
+    "path": "/cart",
+    "languages": {
+      "ru": "Корзина",
+      "ro": "Coş",
+      "en": "Cart"
+    }
+  },
+  {
+    "path": "/login",
+    "languages": {
+      "ru": "Авторизация",
+      "ro": "Autentificarea",
+      "en": "Login"
+    }
+  },
+  {
+    "path": "/signup",
+    "languages": {
+      "ru": "Регистрация",
+      "ro": "Inscriere",
+      "en": "Sign Up"
+    }
+  },
+  {
+    "path": "/admin",
+    "languages": {
+      "ru": "Панель управления",
+      "ro": "Panela",
+      "en": "Admin Panel"
+    }
+  }
+]

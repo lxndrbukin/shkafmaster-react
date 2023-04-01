@@ -1,11 +1,14 @@
 const usersRepo = require('../repositories/Users');
-const { signUpErrors } = require('./helpers/middlewares');
+const { signUpErrors, signInErrors } = require('./helpers/middlewares');
 
 module.exports = (app) => {
   app.post('/api/signup', signUpErrors, async (req, res) => {
     const checkedUser = await usersRepo.getOneBy({ email: req.body.email });
     const checkedPassword = await usersRepo.checkPassword(req.body.password);
     const { password, confirmPassword } = req.body;
+    if (Object.keys(req.errors).length) {
+      return res.send({ errors: { ...req.errors } });
+    }
     if (!checkedUser || !req.body.email.length === 0) {
       if (checkedPassword && password === confirmPassword) {
         const user = await usersRepo.create({
@@ -14,13 +17,27 @@ module.exports = (app) => {
           password: await usersRepo.createPassword(req.body.password),
         });
         user.save();
-        req.session.userId = user.userId;
+        req.session = { userId: user.userId, email: user.email };
+        return res.send(req.session);
       }
     }
   });
 
-  app.post('/api/signin', async (req, res) => {
+  app.post('/api/signin', signInErrors, async (req, res) => {
+    if (Object.keys(req.errors).length) {
+      return res.send({ errors: { ...req.errors } });
+    }
     const user = await usersRepo.getOneBy({ email: req.body.email });
-    return res.send(user);
+    req.session = { userId: user.userId, email: user.email };
+    return res.send(req.session);
+  });
+
+  app.get('/api/current_user', (req, res) => {
+    return res.send(req.session);
+  });
+
+  app.get('/api/signout', (req, res) => {
+    req.session = null;
+    res.redirect('/');
   });
 };

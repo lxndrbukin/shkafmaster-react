@@ -1,0 +1,34 @@
+{
+  "loginHeader": {
+    "ru": "Авторизация",
+    "ro": "Autentificare",
+    "en": "Login"
+  },
+  "loginForm": {
+    "email": {
+      "ru": "Эл. почта",
+      "ro": "E-mail",
+      "en": "Email"
+    },
+    "password": {
+      "ru": "Пароль",
+      "ro": "Parola",
+      "en": "Password"
+    }
+  },
+  "loginButton": {
+    "ru": "Войти",
+    "ro": "Intrati",
+    "en": "Login"
+  },
+  "notSignedUpText": {
+    "ru": "Не зарегистрированы?",
+    "ro": "Nu sunteti inregistati?",
+    "en": "Not signed up?"
+  },
+  "signupLink": {
+    "ru": "Зарегистрируйтесь",
+    "ro": "Înscrieți-vă",
+    "en": "Sign up now"
+  }
+}

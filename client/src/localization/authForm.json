@@ -1,0 +1,29 @@
+{
+  "authHeader": {
+    "ru": "Регистрация",
+    "ro": "Înscriere",
+    "en": "Registration"
+  },
+  "authForm": {
+    "email": {
+      "ru": "Эл. почта",
+      "ro": "E-mail",
+      "en": "Email"
+    },
+    "password": {
+      "ru": "Пароль",
+      "ro": "Parola",
+      "en": "Password"
+    },
+    "confirmPassword": {
+      "ru": "Подтвердить пароль",
+      "ro": "Confirmă parola",
+      "en": "Confirm password"
+    }
+  },
+  "authButton": {
+    "ru": "Зарегистрироваться",
+    "ro": "Înscrieți-vă",
+    "en": "Join"
+  }
+}

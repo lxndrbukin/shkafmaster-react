@@ -12,18 +12,14 @@ const menuButtons = [home, products, contacts];
 
 export default function Header() {
   const dispatch = useDispatch();
-  const { status, language } = useSelector((state) => state.auth);
-  const setAuth = (e) => {
-    e.preventDefault();
-    dispatch(changeAuth(!status));
-  };
+  const { user, language } = useSelector((state) => state.auth);
 
   const setLangauge = (e) => {
     dispatch(changeLanguage(e.target.value.toLowerCase()));
   };
 
   const showAuth = () => {
-    if (status) {
+    if (user) {
       return (
         <li className='user-nav-link'>
           <Link to='/profile'>

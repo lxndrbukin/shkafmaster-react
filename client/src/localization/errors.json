@@ -1,0 +1,23 @@
+{
+  "email": {
+    "msg": {
+      "ru": "Введите действительный эл. адрес",
+      "ro": "Intrati un email valabil",
+      "en": "Please provide a valid email"
+    }
+  },
+  "password": {
+    "msg": {
+      "ru": "Неверный пароль",
+      "ro": "Parola incorecta",
+      "en": "Invalid password"
+    }
+  },
+  "confirmPassword": {
+    "msg": {
+      "ru": "Пароли не совпадают",
+      "ro": "Paroluri nu confirma",
+      "en": "Passwords don't match"
+    }
+  }
+}
