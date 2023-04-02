@@ -8,6 +8,7 @@
   --light-three: #b9b6aa;
   --light-four: #c6c0b9;
   --light-five: #f8f7f1;
+  --light-red: #f3635e;
   --white: #fff;
   --black: #000;
   --shadow: 0 0 2px rgba(0, 0, 0, 0.14);
@@ -202,7 +203,7 @@ h6 {
 /* MAIN */
 main {
   width: 100%;
-  min-height: calc(100vh - 337px);
+  min-height: calc(100vh - 168px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -386,6 +387,19 @@ section {
   align-items: center;
 }
 
+.signup-link {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-link a {
+  font-weight: bold;
+  margin: var(--spacing-xs);
+  color: var(--dark);
+}
+
 /* FORM */
 .form {
   display: flex;
@@ -426,6 +440,13 @@ section {
   font-weight: 600;
   margin: var(--spacing-xs);
   cursor: pointer;
+}
+
+.form .error-wrapper .error-text {
+  margin: 2px var(--spacing-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--light-red);
 }
 
 /* FOOTER */

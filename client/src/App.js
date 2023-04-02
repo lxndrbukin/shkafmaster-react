@@ -9,7 +9,7 @@ import Signin from './components/Signin';
 import Footer from './components/Footer';
 
 export default function App() {
-  const user = useSelector((state) => state.auth);
+  const { status } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -21,8 +21,14 @@ export default function App() {
         <main>
           <Routes>
             <Route path='/' element={<Homepage />} />
-            <Route path='/signup' element={<Signup />} />
-            <Route path='/signin' element={<Signin />} />
+            <Route
+              path='/signup'
+              element={status ? <Navigate to='/' /> : <Signup />}
+            />
+            <Route
+              path='/signin'
+              element={status ? <Navigate to='/' /> : <Signin />}
+            />
           </Routes>
         </main>
         <Footer />

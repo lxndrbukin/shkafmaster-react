@@ -10,4 +10,5 @@ export const store = configureStore({
 export * from './slices/authSlice';
 export * from './thunks/createUser';
 export * from './thunks/loginUser';
+export * from './thunks/logoutUser';
 export * from './thunks/fetchCurrentUser';

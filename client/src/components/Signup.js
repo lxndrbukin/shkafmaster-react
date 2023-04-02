@@ -1,7 +1,14 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { createUser } from '../store';
+import authLocalization from '../localization/authForm.json';
+import errorsLocalization from '../localization/errors.json';
+
+const { authHeader, authButton } = authLocalization;
+const { email, password, confirmPassword } = authLocalization.authForm;
+const { emailMsg, passwordMsg, confirmPasswordMsg } = errorsLocalization;
 
 export default function Signup() {
+  const { authErrors, language } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const formSubmit = (e) => {
     e.preventDefault();
@@ -17,14 +24,37 @@ export default function Signup() {
     <div className='box auth'>
       <h6 className='form-header'>Sign Up</h6>
       <form className='form' onSubmit={formSubmit}>
-        <div className='input-wrapper'>
-          <input name='email' type='text' />
+        <div className='error-wrapper'>
+          <div className='input-wrapper'>
+            <input placeholder={email[language]} name='email' type='text' />
+          </div>
+          <div className='error-text'>
+            {authErrors.email && emailMsg[language]}
+          </div>
         </div>
-        <div className='input-wrapper'>
-          <input name='password' type='password' />
+        <div className='error-wrapper'>
+          <div className='input-wrapper'>
+            <input
+              placeholder={password[language]}
+              name='password'
+              type='password'
+            />
+          </div>
+          <div className='error-text'>
+            {authErrors.password && passwordMsg[language]}
+          </div>
         </div>
-        <div className='input-wrapper'>
-          <input name='confirmPassword' type='password' />
+        <div className='error-wrapper'>
+          <div className='input-wrapper'>
+            <input
+              placeholder={confirmPassword[language]}
+              name='confirmPassword'
+              type='password'
+            />
+          </div>
+          <div className='error-text'>
+            {authErrors.confirmPassword && confirmPasswordMsg[language]}
+          </div>
         </div>
         <input type='Submit' />
       </form>

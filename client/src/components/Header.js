@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { changeAuth, changeLanguage } from '../store';
+import { changeLanguage, logoutUser } from '../store';
 import { Link } from 'react-router-dom';
 import Logo from '../assets/custom/Logo';
 import headerLocalization from '../localization/header.json';
@@ -12,17 +12,22 @@ const menuButtons = [home, products, contacts];
 
 export default function Header() {
   const dispatch = useDispatch();
-  const { user, language } = useSelector((state) => state.auth);
+  const { status, user, language } = useSelector((state) => state.auth);
 
   const setLangauge = (e) => {
     dispatch(changeLanguage(e.target.value.toLowerCase()));
   };
 
+  const changeLogin = (e) => {
+    e.preventDefault();
+    dispatch(logoutUser());
+  };
+
   const showAuth = () => {
-    if (user) {
+    if (status) {
       return (
         <li className='user-nav-link'>
-          <Link to='/profile'>
+          <Link onClick={changeLogin} to='/profile'>
             <i className='fas fa-user'></i>
           </Link>
         </li>
