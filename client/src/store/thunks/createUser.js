@@ -4,7 +4,11 @@ import axios from 'axios';
 export const createUser = createAsyncThunk(
   'users/createUser',
   async (formValues) => {
-    const res = await axios.post('/api/signup', { ...formValues });
-    return res.data;
+    try {
+      const res = await axios.post('/api/signup', { ...formValues });
+      return res.data;
+    } catch (err) {
+      console.log(err);
+    }
   }
 );

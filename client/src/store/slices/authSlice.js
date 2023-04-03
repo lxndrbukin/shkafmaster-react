@@ -32,12 +32,13 @@ const authSlice = createSlice({
       }
     });
     builder.addCase(createUser.rejected, (state, action) => {
-      if (action.payload.userId) {
-        state.user = action.payload;
-        state.status = true;
-      } else {
-        state.authErrors = { ...state.authErrors, ...action.payload.errors };
-      }
+      // if (action.payload.userId) {
+      //   state.user = action.payload;
+      //   state.status = true;
+      // } else {
+      //   state.authErrors = { ...state.authErrors, ...action.payload.errors };
+      // }
+      console.log(action.payload);
     });
     builder.addCase(loginUser.fulfilled, (state, action) => {
       if (action.payload.userId) {

@@ -4,7 +4,7 @@ module.exports = {
   async signUpErrors(req, res, next) {
     req.errors = {};
     Object.keys(req.body).forEach(async (key, index) => {
-      if (!req.body[key] || req.body[key] === '') {
+      if (!req.body[key] || req.body[key] === null) {
         req.errors[key] = true;
       }
     });
@@ -16,7 +16,7 @@ module.exports = {
       if (!checkedPassword) {
         req.errors['password'] = true;
       }
-      if (password !== confirmPassword || confirmPassword.length === 0) {
+      if (password !== confirmPassword || confirmPassword.length) {
         req.errors['confirmPassword'] = true;
       }
     }
