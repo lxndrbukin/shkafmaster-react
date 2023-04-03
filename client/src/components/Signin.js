@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { loginUser } from '../store';
+import { loginUser, showError } from '../store';
 import loginLocalization from '../localization/loginForm.json';
 import errorsLocalization from '../localization/errors.json';
 
@@ -21,13 +21,31 @@ export default function Signin() {
     dispatch(loginUser(existingUser));
   };
 
+  const setErrors = (e) => {
+    if (e.target.value === '') {
+      dispatch(showError({ [e.target.name]: true }));
+    } else {
+      return;
+    }
+  };
+
+  const removeErrors = (e) => {
+    dispatch(showError({ [e.target.name]: false }));
+  };
+
   return (
     <div className='box auth'>
       <h6 className='form-header'>{loginHeader[language]}</h6>
       <form className='form' onSubmit={formSubmit}>
         <div className='error-wrapper'>
           <div className='input-wrapper'>
-            <input placeholder={email[language]} name='email' type='text' />
+            <input
+              onFocus={removeErrors}
+              onBlur={setErrors}
+              placeholder={email[language]}
+              name='email'
+              type='text'
+            />
           </div>
           <div className='error-text'>
             {authErrors.email && emailMsg[language]}
@@ -36,6 +54,8 @@ export default function Signin() {
         <div className='error-wrapper'>
           <div className='input-wrapper'>
             <input
+              onFocus={removeErrors}
+              onBlur={setErrors}
               placeholder={password[language]}
               name='password'
               type='password'

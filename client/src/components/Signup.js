@@ -22,7 +22,7 @@ export default function Signup() {
 
   return (
     <div className='box auth'>
-      <h6 className='form-header'>Sign Up</h6>
+      <h6 className='form-header'>{authHeader[language]}</h6>
       <form className='form' onSubmit={formSubmit}>
         <div className='error-wrapper'>
           <div className='input-wrapper'>
@@ -56,7 +56,7 @@ export default function Signup() {
             {authErrors.confirmPassword && confirmPasswordMsg[language]}
           </div>
         </div>
-        <input type='Submit' />
+        <input defaultValue={authButton[language]} type='Submit' />
       </form>
     </div>
   );
