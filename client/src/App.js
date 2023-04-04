@@ -6,6 +6,8 @@ import Header from './components/Header';
 import Homepage from './pages/Homepage';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
+import AddItem from './components/AddItem';
+import Catalog from './components/Catalog';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -13,7 +15,7 @@ export default function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchCurrentUser());
-  }, []);
+  }, [dispatch]);
   return (
     <BrowserRouter>
       <React.Fragment>
@@ -29,6 +31,8 @@ export default function App() {
               path='/signin'
               element={status ? <Navigate to='/' /> : <Signin />}
             />
+            <Route path='/add-item' element={<AddItem />} />
+            <Route path='/catalog' element={<Catalog />} />
           </Routes>
         </main>
         <Footer />

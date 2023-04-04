@@ -429,6 +429,28 @@ section {
   margin: 0;
 }
 
+.form textarea {
+  border: none;
+  border-radius: 5px;
+  background-color: var(--white);
+  width: 241px;
+  height: 250px;
+  padding: 5px;
+}
+
+.form select {
+  appearance: none;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.form input:focus,
+.form textarea:focus,
+.form select:focus {
+  outline: none;
+}
+
 .form input[type='submit'] {
   width: 255px;
   height: 35px;
@@ -447,6 +469,29 @@ section {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--light-red);
+}
+
+.form-cols-wrapper {
+  display: flex;
+}
+
+.form-col {
+  margin: 0 var(--spacing-sm);
+}
+
+/* CATALOG */
+.catalog {
+  display: flex;
+  width: 100%;
+  max-width: var(--standard-width);
+  padding: var(--spacing-md);
+  box-sizing: border-box;
+}
+
+.catalog .catalog-items {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(350px, 33.333%));
+  grid-gap: var(--spacing-md);
 }
 
 /* FOOTER */

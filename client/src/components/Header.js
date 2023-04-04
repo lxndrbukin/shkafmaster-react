@@ -27,7 +27,11 @@ export default function Header() {
     if (status) {
       return (
         <li className='user-nav-link'>
-          <Link onClick={changeLogin} to='/profile'>
+          <Link
+            title={userProfile[language]}
+            onClick={changeLogin}
+            to='/profile'
+          >
             <i className='fas fa-user'></i>
           </Link>
         </li>
@@ -35,7 +39,7 @@ export default function Header() {
     }
     return (
       <li className='user-nav-link'>
-        <Link to='/signin'>
+        <Link title={login[language]} to='/signin'>
           <i className='fas fa-sign-in-alt'></i>
         </Link>
       </li>
@@ -45,7 +49,11 @@ export default function Header() {
   const renderedMenuButtons = menuButtons.map((button) => {
     return (
       <li key={button['en']}>
-        <a href='/'>{button[language]}</a>
+        <Link
+          to={`/${button['en'] === 'Home' ? '' : button['en'].toLowerCase()}`}
+        >
+          {button[language]}
+        </Link>
       </li>
     );
   });

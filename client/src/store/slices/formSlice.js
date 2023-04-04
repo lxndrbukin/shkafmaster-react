@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createUser } from '../thunks/createUser';
 import { loginUser } from '../thunks/loginUser';
+import { createItem } from '../thunks/createItem';
 
 const formSlice = createSlice({
   name: 'form',
   initialState: {
     errors: null,
+    values: null,
   },
   reducers: {
     showError(state, action) {
@@ -13,11 +15,22 @@ const formSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(createUser.rejected, (state, action) => {
-      state.errors = action.payload;
+    builder.addCase(createUser.fulfilled, (state, action) => {
+      if (action.payload.errors) {
+        state.errors = action.payload.errors;
+      }
     });
     builder.addCase(loginUser.fulfilled, (state, action) => {
-      state.errors = action.payload.errors;
+      if (action.payload.errors) {
+        state.errors = action.payload.errors;
+      }
+    });
+    builder.addCase(createItem.fulfilled, (state, action) => {
+      if (action.payload.errors) {
+        state.errors = action.payload.errors;
+      } else {
+        state.values = action.payload;
+      }
     });
   },
 });

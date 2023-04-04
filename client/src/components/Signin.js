@@ -11,9 +11,9 @@ const { emailMsg, passwordMsg } = errorsLocalization;
 
 export default function Signin() {
   const { auth, form } = useSelector((state) => state);
-
   const dispatch = useDispatch();
-  const formSubmit = (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     const existingUser = {
       email: e.target.email.value,
@@ -39,7 +39,7 @@ export default function Signin() {
   return (
     <div className='box auth'>
       <h6 className='form-header'>{loginHeader[language]}</h6>
-      <form className='form' onSubmit={formSubmit}>
+      <form className='form' onSubmit={handleSubmit}>
         <div className='error-wrapper'>
           <div className='input-wrapper'>
             <input

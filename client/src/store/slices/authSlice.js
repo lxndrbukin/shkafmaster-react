@@ -24,12 +24,6 @@ const authSlice = createSlice({
         state.status = true;
       }
     });
-    builder.addCase(createUser.rejected, (state, action) => {
-      if (action.payload.userId) {
-        state.user = action.payload;
-        state.status = true;
-      }
-    });
     builder.addCase(loginUser.fulfilled, (state, action) => {
       if (action.payload.userId) {
         state.user = action.payload;

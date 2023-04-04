@@ -5,6 +5,7 @@ const cookieSession = require('cookie-session');
 const cookieParser = require('cookie-parser');
 
 require('./models/User');
+require('./models/Item');
 
 mongoose
   .connect(
