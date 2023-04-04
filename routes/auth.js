@@ -6,9 +6,6 @@ module.exports = (app) => {
     const checkedUser = await usersRepo.getOneBy({ email: req.body.email });
     const checkedPassword = await usersRepo.checkPassword(req.body.password);
     const { password, confirmPassword } = req.body;
-    if (Object.keys(req.errors).length) {
-      return res.send({ errors: { ...req.errors } });
-    }
     if (!checkedUser || !req.body.email.length === 0) {
       if (checkedPassword && password === confirmPassword) {
         const user = await usersRepo.create({
@@ -24,9 +21,6 @@ module.exports = (app) => {
   });
 
   app.post('/api/signin', signInErrors, async (req, res) => {
-    if (Object.keys(req.errors).length) {
-      return res.send({ errors: { ...req.errors } });
-    }
     const user = await usersRepo.getOneBy({ email: req.body.email });
     req.session = { userId: user.userId, email: user.email };
     return res.send(req.session);

@@ -10,7 +10,8 @@ const { loginButton, notSignedUpText, signupLink } = loginLocalization;
 const { emailMsg, passwordMsg } = errorsLocalization;
 
 export default function Signin() {
-  const { authErrors, language } = useSelector((state) => state.auth);
+  const { auth, form } = useSelector((state) => state);
+
   const dispatch = useDispatch();
   const formSubmit = (e) => {
     e.preventDefault();
@@ -33,6 +34,8 @@ export default function Signin() {
     dispatch(showError({ [e.target.name]: false }));
   };
 
+  const { errors } = form;
+  const { language } = auth;
   return (
     <div className='box auth'>
       <h6 className='form-header'>{loginHeader[language]}</h6>
@@ -48,7 +51,7 @@ export default function Signin() {
             />
           </div>
           <div className='error-text'>
-            {authErrors.email && emailMsg[language]}
+            {errors && errors.email && emailMsg[language]}
           </div>
         </div>
         <div className='error-wrapper'>
@@ -62,7 +65,7 @@ export default function Signin() {
             />
           </div>
           <div className='error-text'>
-            {authErrors.password && passwordMsg[language]}
+            {errors && errors.password && passwordMsg[language]}
           </div>
         </div>
         <input defaultValue={loginButton[language]} type='Submit' />

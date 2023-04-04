@@ -9,11 +9,6 @@ const authSlice = createSlice({
   initialState: {
     status: false,
     user: null,
-    authErrors: {
-      email: false,
-      password: false,
-      confirmPassword: false,
-    },
     language: localStorage.getItem('lang') || 'ro',
   },
   reducers: {
@@ -27,25 +22,18 @@ const authSlice = createSlice({
       if (action.payload.userId) {
         state.user = action.payload;
         state.status = true;
-      } else {
-        state.authErrors = { ...state.authErrors, ...action.payload.errors };
       }
     });
     builder.addCase(createUser.rejected, (state, action) => {
-      // if (action.payload.userId) {
-      //   state.user = action.payload;
-      //   state.status = true;
-      // } else {
-      //   state.authErrors = { ...state.authErrors, ...action.payload.errors };
-      // }
-      console.log(action.payload);
+      if (action.payload.userId) {
+        state.user = action.payload;
+        state.status = true;
+      }
     });
     builder.addCase(loginUser.fulfilled, (state, action) => {
       if (action.payload.userId) {
         state.user = action.payload;
         state.status = true;
-      } else {
-        state.authErrors = { ...state.authErrors, ...action.payload.errors };
       }
     });
     builder.addCase(logoutUser.fulfilled, (state, action) => {

@@ -16,8 +16,8 @@ const formSlice = createSlice({
     builder.addCase(createUser.rejected, (state, action) => {
       state.errors = action.payload;
     });
-    builder.addCase(loginUser.rejected, (state, action) => {
-      state.errors = action.payload;
+    builder.addCase(loginUser.fulfilled, (state, action) => {
+      state.errors = action.payload.errors;
     });
   },
 });
