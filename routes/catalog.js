@@ -1,6 +1,7 @@
 const multer = require('multer');
 
 const catalogItemsRepo = require('../repositories/Items');
+const categoriesRepo = require('../repositories/Categories');
 const { formErrors } = require('./helpers/middlewares');
 
 const upload = multer({});
@@ -34,4 +35,18 @@ module.exports = (app) => {
       return res.redirect('/');
     }
   );
+
+  app.get('/api/categories', async (req, res) => {
+    return res.send('Hi');
+  });
+
+  app.post('/api/categories', async (req, res) => {
+    const category = await categoriesRepo.create({
+      ru: { name: req.body.nameRU },
+      ro: { name: req.body.nameRO },
+      en: { name: req.body.nameEN },
+    });
+    category.save();
+    return res.send(category);
+  });
 };

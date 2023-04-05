@@ -17,8 +17,10 @@ export default function AddItem() {
     dispatch(createItem(item));
   };
 
-  const setError = (e) => {
-    dispatch(showError({ [e.target.name]: true }));
+  const setError = (e, bool) => {
+    if (!e.target.value.length) {
+      dispatch(showError({ [e.target.name]: bool }));
+    }
   };
 
   return (
@@ -35,7 +37,8 @@ export default function AddItem() {
               <div className='error-wrapper'>
                 <div className='input-wrapper'>
                   <input
-                    onBlur={setError}
+                    onBlur={(e) => setError(e, true)}
+                    onFocus={(e) => setError(e, false)}
                     name='nameRU'
                     placeholder='Название'
                     className='form-input'
@@ -48,7 +51,12 @@ export default function AddItem() {
               </div>
               <div className='error-wrapper'>
                 <div className='input-wrapper'>
-                  <textarea className='form-textarea' name='descRU'></textarea>
+                  <textarea
+                    onBlur={(e) => setError(e, true)}
+                    onFocus={(e) => setError(e, false)}
+                    className='form-textarea'
+                    name='descRU'
+                  ></textarea>
                 </div>
                 <div className='error-text'>
                   {errors && errors.descRU && 'Error'}
@@ -59,6 +67,8 @@ export default function AddItem() {
               <div className='error-wrapper'>
                 <div className='input-wrapper'>
                   <input
+                    onBlur={(e) => setError(e, true)}
+                    onFocus={(e) => setError(e, false)}
                     name='nameRO'
                     placeholder='Nume'
                     className='form-input'
@@ -71,7 +81,12 @@ export default function AddItem() {
               </div>
               <div className='error-wrapper'>
                 <div className='input-wrapper'>
-                  <textarea className='form-textarea' name='descRO'></textarea>
+                  <textarea
+                    onBlur={(e) => setError(e, true)}
+                    onFocus={(e) => setError(e, false)}
+                    className='form-textarea'
+                    name='descRO'
+                  ></textarea>
                 </div>
                 <div className='error-text'>
                   {errors && errors.descRO && 'Error'}

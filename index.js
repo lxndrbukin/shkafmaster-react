@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 
 require('./models/User');
 require('./models/Item');
+require('./models/Category');
 
 mongoose
   .connect(

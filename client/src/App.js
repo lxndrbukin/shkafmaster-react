@@ -7,6 +7,7 @@ import Homepage from './pages/Homepage';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
 import AddItem from './components/AddItem';
+import AddCategory from './components/AddCategory';
 import Catalog from './components/Catalog';
 import Footer from './components/Footer';
 
@@ -31,7 +32,8 @@ export default function App() {
               path='/signin'
               element={status ? <Navigate to='/' /> : <Signin />}
             />
-            <Route path='/add-item' element={<AddItem />} />
+            <Route path='/admin/add-item' element={<AddItem />} />
+            <Route path='/admin/add-category' element={<AddCategory />} />
             <Route path='/catalog' element={<Catalog />} />
           </Routes>
         </main>
