@@ -1,5 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { createItem, showError } from '../store';
+import Input from './reusable/Input';
+import Textarea from './reusable/Textarea';
+import Select from './reusable/Select';
+
+const options = [
+  'Hallways',
+  'Wardrobes',
+  'Kitchens',
+  'Living',
+  'Office',
+  'Tables',
+];
 
 export default function AddItem() {
   const dispatch = useDispatch();
@@ -34,82 +46,42 @@ export default function AddItem() {
         >
           <div className='form-cols-wrapper'>
             <div className='form-col'>
-              <div className='error-wrapper'>
-                <div className='input-wrapper'>
-                  <input
-                    onBlur={(e) => setError(e, true)}
-                    onFocus={(e) => setError(e, false)}
-                    name='nameRU'
-                    placeholder='Название'
-                    className='form-input'
-                    type='text'
-                  />
-                </div>
-                <div className='error-text'>
-                  {errors && errors.nameRU && 'Error'}
-                </div>
-              </div>
-              <div className='error-wrapper'>
-                <div className='input-wrapper'>
-                  <textarea
-                    onBlur={(e) => setError(e, true)}
-                    onFocus={(e) => setError(e, false)}
-                    className='form-textarea'
-                    name='descRU'
-                  ></textarea>
-                </div>
-                <div className='error-text'>
-                  {errors && errors.descRU && 'Error'}
-                </div>
-              </div>
+              <Input
+                onBlur={(e) => setError(e, true)}
+                onFocus={(e) => setError(e, false)}
+                name='nameRU'
+                placeholder='Название'
+                type='text'
+                errorMsg='Please enter a value'
+                required
+              />
+              <Textarea
+                onBlur={(e) => setError(e, true)}
+                onFocus={(e) => setError(e, false)}
+                name='descRU'
+                placeholder='Описание'
+                required
+              />
             </div>
             <div className='form-col'>
-              <div className='error-wrapper'>
-                <div className='input-wrapper'>
-                  <input
-                    onBlur={(e) => setError(e, true)}
-                    onFocus={(e) => setError(e, false)}
-                    name='nameRO'
-                    placeholder='Nume'
-                    className='form-input'
-                    type='text'
-                  />
-                </div>
-                <div className='error-text'>
-                  {errors && errors.nameRO && 'Error'}
-                </div>
-              </div>
-              <div className='error-wrapper'>
-                <div className='input-wrapper'>
-                  <textarea
-                    onBlur={(e) => setError(e, true)}
-                    onFocus={(e) => setError(e, false)}
-                    className='form-textarea'
-                    name='descRO'
-                  ></textarea>
-                </div>
-                <div className='error-text'>
-                  {errors && errors.descRO && 'Error'}
-                </div>
-              </div>
+              <Input
+                onBlur={(e) => setError(e, true)}
+                onFocus={(e) => setError(e, false)}
+                name='nameRO'
+                placeholder='Nume'
+                type='text'
+                required
+              />
+              <Textarea
+                onBlur={(e) => setError(e, true)}
+                onFocus={(e) => setError(e, false)}
+                name='descRO'
+                placeholder='Descriere'
+                required
+              />
             </div>
           </div>
-          <div className='error-wrapper'>
-            <div className='input-wrapper'>
-              <select name='category' className='form-input form-select'>
-                <option disabled selected></option>
-                <option>Wardrobes</option>
-                <option>Kitchens</option>
-                <option>Tables</option>
-                <option>Hallways</option>
-                <option>Offices</option>
-                <option>Livings</option>
-              </select>
-            </div>
-            <div className='error-text'>
-              {errors && errors.category && 'Error'}
-            </div>
-          </div>
+          <Select options={options} name='category' />
           <div className='input-wrapper'>
             <input name='image' type='file' className='form-input' />
           </div>
