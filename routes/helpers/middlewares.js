@@ -61,4 +61,16 @@ module.exports = {
     }
     next();
   },
+  async formErrors(req, res, next) {
+    let errors = {};
+    Object.keys(req.body).forEach(async (key, index) => {
+      if (!req.body[key] || req.body[key] === '') {
+        errors[key] = true;
+      }
+    });
+    if (Object.keys(errors).length) {
+      return res.send({ errors });
+    }
+    next();
+  },
 };
