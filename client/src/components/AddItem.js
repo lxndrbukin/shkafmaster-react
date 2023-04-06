@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { createItem, showError } from '../store';
 import Input from './reusable/Input';
 import Textarea from './reusable/Textarea';
@@ -15,7 +15,6 @@ const options = [
 
 export default function AddItem() {
   const dispatch = useDispatch();
-  const { errors } = useSelector((state) => state.form);
   const handleSubmit = (e) => {
     e.preventDefault();
     const item = {
@@ -52,7 +51,7 @@ export default function AddItem() {
                 name='nameRU'
                 placeholder='Название'
                 type='text'
-                errorMsg='Please enter a value'
+                errorMsg='Please enter a name'
                 required
               />
               <Textarea
@@ -60,6 +59,7 @@ export default function AddItem() {
                 onFocus={(e) => setError(e, false)}
                 name='descRU'
                 placeholder='Описание'
+                errorMsg='Please enter a description'
                 required
               />
             </div>
@@ -70,6 +70,7 @@ export default function AddItem() {
                 name='nameRO'
                 placeholder='Nume'
                 type='text'
+                errorMsg='Please enter a name'
                 required
               />
               <Textarea
@@ -77,6 +78,7 @@ export default function AddItem() {
                 onFocus={(e) => setError(e, false)}
                 name='descRO'
                 placeholder='Descriere'
+                errorMsg='Please enter a description'
                 required
               />
             </div>

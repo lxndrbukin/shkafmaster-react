@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { createUser, showError } from '../store';
+import Input from './reusable/Input';
 import authLocalization from '../localization/authForm.json';
 import errorsLocalization from '../localization/errors.json';
 
@@ -8,7 +9,7 @@ const { email, password, confirmPassword } = authLocalization.authForm;
 const { emailMsg, passwordMsg, confirmPasswordMsg } = errorsLocalization;
 
 export default function Signup() {
-  const { auth, form } = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const formSubmit = (e) => {
@@ -21,57 +22,46 @@ export default function Signup() {
     dispatch(createUser(user));
   };
 
-  const setErrors = (e) => {
+  const setErrors = (e, bool) => {
     if (e.target.value === '') {
-      dispatch(showError({ [e.target.name]: true }));
+      dispatch(showError({ [e.target.name]: bool }));
     } else {
       return;
     }
   };
 
-  const removeErrors = (e) => {
-    dispatch(showError({ [e.target.name]: false }));
-  };
-
-  const { errors } = form;
   const { language } = auth;
   return (
     <div className='box auth'>
       <h6 className='form-header'>{authHeader[language]}</h6>
       <form className='form' onSubmit={formSubmit}>
-        <div className='error-wrapper'>
-          <div className='input-wrapper'>
-            <input placeholder={email[language]} name='email' type='text' />
-          </div>
-          <div className='error-text'>
-            {errors && errors.email && emailMsg[language]}
-          </div>
-        </div>
-        <div className='error-wrapper'>
-          <div className='input-wrapper'>
-            <input
-              onBlur={setErrors}
-              placeholder={password[language]}
-              name='password'
-              type='password'
-            />
-          </div>
-          <div className='error-text'>
-            {errors && errors.password && passwordMsg[language]}
-          </div>
-        </div>
-        <div className='error-wrapper'>
-          <div className='input-wrapper'>
-            <input
-              placeholder={confirmPassword[language]}
-              name='confirmPassword'
-              type='password'
-            />
-          </div>
-          <div className='error-text'>
-            {errors && errors.confirmPassword && confirmPasswordMsg[language]}
-          </div>
-        </div>
+        <Input
+          onFocus={(e) => setErrors(e, false)}
+          onBlur={(e) => setErrors(e, true)}
+          placeholder={email[language]}
+          name='email'
+          type='text'
+          errorMsg={emailMsg[language]}
+          required
+        />
+        <Input
+          onFocus={(e) => setErrors(e, false)}
+          onBlur={(e) => setErrors(e, true)}
+          placeholder={password[language]}
+          name='password'
+          type='password'
+          errorMsg={passwordMsg[language]}
+          required
+        />
+        <Input
+          onFocus={(e) => setErrors(e, false)}
+          onBlur={(e) => setErrors(e, true)}
+          placeholder={confirmPassword[language]}
+          name='confirmPassword'
+          type='password'
+          errorMsg={confirmPasswordMsg[language]}
+          required
+        />
         <input defaultValue={authButton[language]} type='Submit' />
       </form>
     </div>
