@@ -1,14 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchItems } from '../thunks/fetchItems';
+import { createCategory } from '../thunks/createCategory';
 
 const itemSlice = createSlice({
   name: 'items',
   initialState: {
     data: [],
+    categories: {
+      data: [],
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchItems.fulfilled, (state, action) => {
       state.data = action.payload;
+    });
+    builder.addCase(createCategory.fulfilled, (state, action) => {
+      state.categories.data.push(action.payload);
     });
   },
 });

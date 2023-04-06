@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { createCategory } from '../store';
+import Input from './reusable/Input';
 
 export default function AddCategory() {
   const dispatch = useDispatch();
@@ -19,21 +20,9 @@ export default function AddCategory() {
       <div className='form-wrapper'>
         <h6 className='form-header'>Add Category</h6>
         <form onSubmit={handleSubmit} className='form'>
-          <div className='error-wrapper'>
-            <div className='input-wrapper'>
-              <input type='text' name='nameRU' placeholder='Название RU' />
-            </div>
-          </div>
-          <div className='error-wrapper'>
-            <div className='input-wrapper'>
-              <input type='text' name='nameRO' placeholder='Nume RO' />
-            </div>
-          </div>
-          <div className='error-wrapper'>
-            <div className='input-wrapper'>
-              <input type='text' name='nameEN' placeholder='Name EN' />
-            </div>
-          </div>
+          <Input type='text' name='nameRU' placeholder='Название RU' />
+          <Input type='text' name='nameRO' placeholder='Nume RO' />
+          <Input type='text' name='nameEN' placeholder='Name EN' />
           <input type='submit' className='form-submit' value='Submit' />
         </form>
       </div>

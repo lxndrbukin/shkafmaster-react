@@ -46,6 +46,20 @@ export default function Header() {
     );
   };
 
+  const showAdmin = () => {
+    if (status && user.role === 'admin') {
+      return (
+        <li className='user-nav-link'>
+          <Link title='Admin' to='/admin'>
+            <i className='fas fa-tools'></i>
+          </Link>
+        </li>
+      );
+    } else {
+      return null;
+    }
+  };
+
   const renderedMenuButtons = menuButtons.map((button) => {
     return (
       <li key={button['en']}>
@@ -71,6 +85,7 @@ export default function Header() {
         </nav>
         <div className='user-nav'>
           <ul className='user-nav-links'>
+            {showAdmin()}
             {showAuth()}
             <li className='user-nav-link'>
               <select

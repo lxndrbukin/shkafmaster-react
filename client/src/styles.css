@@ -126,6 +126,16 @@ h6 {
   display: flex;
 }
 
+/* SPINNER */
+.spinner {
+  width: 100px;
+  height: 100px;
+  border: 10px solid var(--light-five);
+  border-top: 10px solid var(--dark);
+  border-radius: 50%;
+  animation: spin 1.2s infinite;
+}
+
 /* HEADER */
 .header-wrapper {
   width: 100%;
@@ -482,6 +492,8 @@ section {
 /* CATALOG */
 .catalog {
   display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   max-width: var(--standard-width);
   padding: var(--spacing-md);
@@ -524,4 +536,14 @@ section {
 
 .footer .nav .nav-links li {
   padding: var(--spacing-sm) 0;
+}
+
+/* ANIMATIONS */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -14,7 +14,11 @@ module.exports = (app) => {
           password: await usersRepo.createPassword(req.body.password),
         });
         user.save();
-        req.session = { userId: user.userId, email: user.email };
+        req.session = {
+          userId: user.userId,
+          email: user.email,
+          role: user.role,
+        };
         return res.send(req.session);
       }
     }
@@ -22,7 +26,7 @@ module.exports = (app) => {
 
   app.post('/api/signin', signInErrors, async (req, res) => {
     const user = await usersRepo.getOneBy({ email: req.body.email });
-    req.session = { userId: user.userId, email: user.email };
+    req.session = { userId: user.userId, email: user.email, role: user.role };
     return res.send(req.session);
   });
 

@@ -27,6 +27,7 @@ app.use(
 app.use(cookieParser());
 
 require('./routes/auth')(app);
+require('./routes/users')(app);
 require('./routes/catalog')(app);
 
 const PORT = 5000;
