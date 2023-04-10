@@ -20,3 +20,4 @@ export * from './thunks/createItem';
 export * from './thunks/fetchItems';
 export * from './thunks/fetchCurrentUser';
 export * from './thunks/createCategory';
+export * from './thunks/fetchCategories';

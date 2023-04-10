@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchItems } from '../store';
+import { fetchItems, fetchCategories } from '../store';
 import Spinner from '../assets/custom/Spinner';
 import CatalogItem from './CatalogItem';
 
@@ -9,6 +9,7 @@ export default function Catalog() {
 
   useEffect(() => {
     dispatch(fetchItems());
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   const { data } = useSelector((state) => state.items);
