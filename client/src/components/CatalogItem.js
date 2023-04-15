@@ -7,7 +7,7 @@ import Modal from './reusable/Modal';
 export default function CatalogItem({ name, desc, image, id }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { role } = useSelector((state) => state.auth.user);
+  const { user, status } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const handleDelete = () => {
@@ -16,7 +16,7 @@ export default function CatalogItem({ name, desc, image, id }) {
   };
 
   let buttons;
-  if (role === 'admin') {
+  if (status && user.role === 'admin') {
     buttons = (
       <div className='item-btns'>
         <button>

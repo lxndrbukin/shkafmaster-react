@@ -1,5 +1,6 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { createItem, showError } from '../store';
+import { createItem, showError, fetchCategories } from '../store';
 import Input from './reusable/Input';
 import Textarea from './reusable/Textarea';
 import Select from './reusable/Select';
@@ -15,6 +16,9 @@ const options = [
 
 export default function AddItem() {
   const dispatch = useDispatch();
+
+  useEffect(() => dispatch(fetchCategories()), [dispatch]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const item = {

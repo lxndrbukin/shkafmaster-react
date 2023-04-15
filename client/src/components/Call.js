@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import callImg from '../assets/imgs/callback_hallway.png';
 import callLocalization from '../localization/call.json';
+import Input from './reusable/Input';
 
 const { header, nameField, phoneField, submitButton } = callLocalization;
 
@@ -12,11 +13,19 @@ export default function Call() {
         <div className='call-form'>
           <h4 className='call-header'>{header[language]}</h4>
           <form>
-            <input type='text' placeholder={nameField[language]} name='name' />
-            <input
+            <Input
+              type='text'
+              placeholder={nameField[language]}
+              name='name'
+              errorMsg={`Please enter your name`}
+              required
+            />
+            <Input
               type='text'
               placeholder={phoneField[language]}
               name='phone'
+              errorMsg={`Please enter your phone number`}
+              required
             />
             <input type='submit' value={submitButton[language]} />
           </form>

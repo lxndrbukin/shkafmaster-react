@@ -5,7 +5,7 @@ import Logo from '../assets/custom/Logo';
 import headerLocalization from '../localization/header.json';
 
 const { home, products, contacts } = headerLocalization.menuButtons;
-const { cart, userProfile, login } = headerLocalization.userMenu;
+const { userProfile, login } = headerLocalization.userMenu;
 
 const languages = ['ro', 'ru', 'en'];
 const menuButtons = [home, products, contacts];

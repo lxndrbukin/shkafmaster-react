@@ -45,7 +45,12 @@ module.exports = (app) => {
     return res.send('Hi');
   });
 
-  app.post('/api/categories', async (req, res) => {
+  app.get('/api/catalog/categories', async (req, res) => {
+    const categories = await categoriesRepo.getAll();
+    return res.send(categories);
+  });
+
+  app.post('/api/catalog/categories', async (req, res) => {
     const category = await categoriesRepo.create({
       ru: { name: req.body.nameRU },
       ro: { name: req.body.nameRO },

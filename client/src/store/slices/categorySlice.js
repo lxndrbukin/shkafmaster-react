@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createCategory } from '../thunks/createCategory';
+import { fetchCategories } from '../thunks/fetchCategories';
 
 const categorySlice = createSlice({
   name: 'categories',
