@@ -1,3 +1,7 @@
-export default function Button({ children, className }) {
-  return <a className={`button ${className || ''}`}>{children}</a>;
+export default function Button({ children, className, ...rest }) {
+  return (
+    <a {...rest} className={`button ${className || ''}`}>
+      {children}
+    </a>
+  );
 }

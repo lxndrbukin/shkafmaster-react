@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchItems } from '../thunks/fetchItems';
+import { deleteItem } from '../thunks/deleteItem';
 import { createCategory } from '../thunks/createCategory';
 
 const itemSlice = createSlice({
@@ -16,6 +17,9 @@ const itemSlice = createSlice({
     });
     builder.addCase(createCategory.fulfilled, (state, action) => {
       state.categories.data.push(action.payload);
+    });
+    builder.addCase(deleteItem.fulfilled, (state, action) => {
+      state.data = action.payload;
     });
   },
 });

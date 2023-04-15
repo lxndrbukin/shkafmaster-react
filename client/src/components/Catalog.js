@@ -21,10 +21,11 @@ export default function Catalog() {
     const items = data.map((item) => {
       return (
         <CatalogItem
-          key={item['ro'].name}
+          key={item._id}
           name={item[language].name}
           desc={item[language].desc}
           image={item.image}
+          id={item._id}
         />
       );
     });

@@ -30,11 +30,16 @@ module.exports = (app) => {
         category: req.body.category,
         image: encodedImage,
       });
-      console.log(catalogItem);
       catalogItem.save();
       return res.redirect('/');
     }
   );
+
+  app.post('/api/catalog/:id', async (req, res) => {
+    await catalogItemsRepo.deleteOneBy({ _id: req.body.id });
+    const items = await catalogItemsRepo.getAll();
+    res.send(items);
+  });
 
   app.get('/api/categories', async (req, res) => {
     return res.send('Hi');

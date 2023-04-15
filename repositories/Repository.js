@@ -17,7 +17,12 @@ class Repository {
 
   async getAll() {
     const { Schema } = this;
-    return Schema.find().select('-_id').clone();
+    return Schema.find().clone();
+  }
+
+  async deleteOneBy(filters) {
+    const { Schema } = this;
+    return Schema.deleteOne(filters).clone();
   }
 
   randomId() {
